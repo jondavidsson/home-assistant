@@ -109,7 +109,7 @@ av==6.1.2
 axis==25
 
 # homeassistant.components.zha
-bellows-homeassistant==0.11.0
+bellows-homeassistant==0.12.0
 
 # homeassistant.components.bom
 bomradarloop==0.1.3
@@ -323,11 +323,6 @@ pexpect==4.6.0
 # homeassistant.components.pilight
 pilight==0.1.1
 
-# homeassistant.components.image_processing
-# homeassistant.components.proxy
-# homeassistant.components.qrcode
-pillow==6.2.1
-
 # homeassistant.components.plex
 plexapi==3.3.0
 
@@ -528,7 +523,7 @@ python-miio==0.4.8
 python-nest==4.1.0
 
 # homeassistant.components.velbus
-python-velbus==2.0.27
+python-velbus==2.0.30
 
 # homeassistant.components.awair
 python_awair==0.0.4
@@ -558,7 +553,7 @@ restrictedpython==5.0
 rflink==0.0.46
 
 # homeassistant.components.ring
-ring_doorbell==0.2.3
+ring_doorbell==0.2.5
 
 # homeassistant.components.yamaha
 rxv==0.6.0
@@ -567,7 +562,7 @@ rxv==0.6.0
 samsungctl[websocket]==0.7.1
 
 # homeassistant.components.simplisafe
-simplisafe-python==5.3.5
+simplisafe-python==5.3.6
 
 # homeassistant.components.sleepiq
 sleepyq==0.7
@@ -583,7 +578,7 @@ somecomfort==0.5.2
 
 # homeassistant.components.recorder
 # homeassistant.components.sql
-sqlalchemy==1.3.11
+sqlalchemy==1.3.12
 
 # homeassistant.components.starline
 starline==0.1.3
@@ -602,6 +597,9 @@ sunwatcher==0.2.1
 
 # homeassistant.components.tellduslive
 tellduslive==0.10.10
+
+# homeassistant.components.tesla
+teslajsonpy==0.2.1
 
 # homeassistant.components.toon
 toonapilib==3.2.4
@@ -658,19 +656,19 @@ ya_ma==0.3.8
 yahooweather==0.10
 
 # homeassistant.components.zeroconf
-zeroconf==0.24.0
+zeroconf==0.24.3
 
 # homeassistant.components.zha
-zha-quirks==0.0.28
+zha-quirks==0.0.30
 
 # homeassistant.components.zha
 zigpy-deconz==0.7.0
 
 # homeassistant.components.zha
-zigpy-homeassistant==0.11.0
+zigpy-homeassistant==0.12.0
 
 # homeassistant.components.zha
-zigpy-xbee-homeassistant==0.7.0
+zigpy-xbee-homeassistant==0.8.0
 
 # homeassistant.components.zha
 zigpy-zigate==0.5.0
