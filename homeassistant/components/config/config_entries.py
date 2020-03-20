@@ -8,6 +8,7 @@ from homeassistant.auth.permissions.const import CAT_CONFIG_ENTRIES
 from homeassistant.components import websocket_api
 from homeassistant.components.http import HomeAssistantView
 from homeassistant.exceptions import Unauthorized
+import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.data_entry_flow import (
     FlowManagerIndexView,
     FlowManagerResourceView,
@@ -23,12 +24,8 @@ async def async_setup(hass):
     hass.http.register_view(ConfigManagerFlowResourceView(hass.config_entries.flow))
     hass.http.register_view(ConfigManagerAvailableFlowView)
 
-    hass.http.register_view(
-        OptionManagerFlowIndexView(hass.config_entries.options.flow)
-    )
-    hass.http.register_view(
-        OptionManagerFlowResourceView(hass.config_entries.options.flow)
-    )
+    hass.http.register_view(OptionManagerFlowIndexView(hass.config_entries.options))
+    hass.http.register_view(OptionManagerFlowResourceView(hass.config_entries.options))
 
     hass.components.websocket_api.async_register_command(config_entries_progress)
     hass.components.websocket_api.async_register_command(system_options_list)
@@ -49,7 +46,9 @@ def _prepare_json(result):
     if schema is None:
         data["data_schema"] = []
     else:
-        data["data_schema"] = voluptuous_serialize.convert(schema)
+        data["data_schema"] = voluptuous_serialize.convert(
+            schema, custom_serializer=cv.custom_serializer
+        )
 
     return data
 

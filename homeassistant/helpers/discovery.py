@@ -5,7 +5,7 @@ There are two different types of discoveries that can be fired/listened for.
  - listen_platform/discover_platform is for platforms. These are used by
    components to allow discovery of their platforms.
 """
-from typing import Callable, Collection, Union
+from typing import Any, Callable, Collection, Dict, Optional, Union
 
 from homeassistant import core, setup
 from homeassistant.const import ATTR_DISCOVERED, ATTR_SERVICE, EVENT_PLATFORM_DISCOVERED
@@ -65,7 +65,7 @@ def discover(hass, service, discovered, component, hass_config):
 async def async_discover(hass, service, discovered, component, hass_config):
     """Fire discovery event. Can ensure a component is loaded."""
     if component in DEPENDENCY_BLACKLIST:
-        raise HomeAssistantError("Cannot discover the {} component.".format(component))
+        raise HomeAssistantError(f"Cannot discover the {component} component.")
 
     if component is not None and component not in hass.config.components:
         await setup.async_setup_component(hass, component, hass_config)
@@ -90,7 +90,9 @@ def listen_platform(
 
 @bind_hass
 def async_listen_platform(
-    hass: core.HomeAssistant, component: str, callback: Callable
+    hass: core.HomeAssistant,
+    component: str,
+    callback: Callable[[str, Optional[Dict[str, Any]]], Any],
 ) -> None:
     """Register a platform loader listener.
 
@@ -151,7 +153,7 @@ async def async_load_platform(hass, component, platform, discovered, hass_config
     assert hass_config, "You need to pass in the real hass config"
 
     if component in DEPENDENCY_BLACKLIST:
-        raise HomeAssistantError("Cannot discover the {} component.".format(component))
+        raise HomeAssistantError(f"Cannot discover the {component} component.")
 
     setup_success = True
 
